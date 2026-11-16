@@ -6,7 +6,7 @@ echo      Brototype Helper AI - Auto Updater
 echo =======================================================
 echo.
 
-set "TARGET_DIR=%LOCALAPPDATA%\BrototypeHelperAI"
+set "TARGET_DIR=C:\BrototypeHelperAI"
 set "ZIP_PATH=%TEMP%\brototype_helper_latest.zip"
 
 echo [1/3] Checking for latest release from GitHub...

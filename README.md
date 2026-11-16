@@ -61,9 +61,9 @@ Choose the installation method suited to your browser:
 
 1. Download **`install.bat`** from the latest [GitHub Release](https://github.com/ytshidan50/BrototypeHelperAI/releases).
 2. Double-click **`install.bat`**.  
-   *The installer automatically fetches the latest package from GitHub, extracts it to `%LOCALAPPDATA%\BrototypeHelperAI`, and opens Chrome's extensions page.*
+   *The installer automatically fetches the latest package from GitHub, extracts it directly to `C:\BrototypeHelperAI`, and copies the path to your clipboard.*
 3. In Chrome, enable **Developer mode** (toggle in the top-right corner).
-4. Click **Load unpacked** and select the folder opened by the installer (`%LOCALAPPDATA%\BrototypeHelperAI`).
+4. Click **Load unpacked** and select `C:\BrototypeHelperAI` (or just press `Ctrl + V` and hit Enter!).
 5. **Future Updates:** Run **`update.bat`** anytime to pull the newest update in place, then click the reload icon 🔄 in Chrome!
 
 ---

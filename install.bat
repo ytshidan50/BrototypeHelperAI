@@ -6,7 +6,7 @@ echo     Brototype Helper AI - Automated Installer
 echo =======================================================
 echo.
 
-set "TARGET_DIR=%LOCALAPPDATA%\BrototypeHelperAI"
+set "TARGET_DIR=C:\BrototypeHelperAI"
 set "ZIP_PATH=%TEMP%\brototype_helper_latest.zip"
 
 echo [1/4] Preparing permanent directory: "%TARGET_DIR%"
@@ -37,13 +37,15 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command ^
   "Expand-Archive -Path '%ZIP_PATH%' -DestinationPath '%TARGET_DIR%' -Force; Remove-Item '%ZIP_PATH%' -Force"
 
 echo [4/4] Installation Complete!
+echo|set /p=C:\BrototypeHelperAI| clip
 echo.
 echo =======================================================
 echo  Final Step:
 echo  1. Chrome's Extensions page will now open.
 echo  2. Enable 'Developer mode' (top-right).
-echo  3. Click 'Load unpacked' and select the folder:
-echo     %TARGET_DIR%
+echo  3. Click 'Load unpacked' and select:
+echo     C:\BrototypeHelperAI
+echo     (Path is copied to clipboard! Just press Ctrl+V)
 echo =======================================================
 echo.
 
