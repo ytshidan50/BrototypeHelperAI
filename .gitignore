@@ -1,0 +1,14 @@
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Distribution archives (published only in GitHub Releases)
+*.zip
+
+# Temporary build artifacts
+dist/
+build/

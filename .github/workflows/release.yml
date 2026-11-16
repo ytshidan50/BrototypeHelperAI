@@ -1,0 +1,33 @@
+name: Release Extension Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Package Extension
+        run: |
+          VERSION=$(grep -o '"version": *"[^"]*"' manifest.json | cut -d'"' -f4)
+          ZIP_NAME="Brototype-Helper-AI-v${VERSION}.zip"
+          echo "Packaging $ZIP_NAME..."
+          zip -r "$ZIP_NAME" manifest.json background.js content.js content.css popup.html popup.js popup.css shared.css options.html options.js README.md icons/
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_NAME }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true

@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Brototype Helper AI",
+  "version": "1.4.0",
+  "description": "Intelligent productivity and workflow assistant for Brototype students",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "host_permissions": [
+    "https://student.brototype.com/*",
+    "https://api.openai.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.anthropic.com/*",
+    "https://api.github.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://student.brototype.com/tasks/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Brototype Helper AI"
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
+

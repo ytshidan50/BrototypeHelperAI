@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brototype Helper AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- Top Header / Navigation Bar -->
+  <header class="pop-header">
+    <div class="brand">
+      <div class="brand-icon">✨</div>
+      <div class="brand-text">
+        <h1>Brototype Helper AI</h1>
+        <p>Student Workflow Assistant</p>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <button class="nav-btn active" id="tab-home" data-view="home">Home</button>
+      <button class="nav-btn" id="tab-manage" data-view="manage">Manage</button>
+      <button class="nav-btn nav-tasks-btn" id="tab-tasks" title="Go directly to Module Tasks">Tasks ↗</button>
+    </nav>
+  </header>
+
+  <!-- Optional GitHub Update Banner -->
+  <div class="update-banner" id="update-banner">
+    <span>⚠️ Update available: <strong id="update-version">v1.4.1</strong></span>
+    <a id="update-link" target="_blank">Download</a>
+  </div>
+
+  <!-- Content Container -->
+  <main class="pop-content">
+
+    <!-- ── View 1: Home (Quick Config & Status) ── -->
+    <div class="view-panel active" id="view-home">
+      
+      <!-- Empty state shown when no API key / service is configured -->
+      <div class="pcard empty-state" id="home-empty" style="display:none;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <p>No AI provider configured yet.<br>Add Google Gemini, OpenAI, or Claude to get started.</p>
+        <button class="btn-submit" id="home-goto-manage">➕ Configure Service</button>
+      </div>
+
+      <!-- Active Provider & Model Selection (shown when configured) -->
+      <div id="home-configured" style="display:none; flex-direction:column; gap:12px;">
+        <div class="pcard">
+          <div class="pcard-title">
+            <span>Active AI Service</span>
+            <span class="active-tag" id="home-active-pill">Active</span>
+          </div>
+
+          <div class="form-group">
+            <label for="home-service-select">Provider</label>
+            <select class="form-select" id="home-service-select"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="home-model-select">Model</label>
+            <select class="form-select" id="home-model-select"></select>
+          </div>
+        </div>
+
+        <!-- Tone / Creativity Slider -->
+        <div class="pcard">
+          <div class="pcard-title">
+            <span>Tone & Phrasing</span>
+            <span style="color:#58a6ff; font-weight:700;" id="temp-val">0.75</span>
+          </div>
+
+          <div class="form-group">
+            <div class="slider-labels">
+              <span>Robotic / Generic (0.5)</span>
+              <span>Natural / Human (1.1)</span>
+            </div>
+            <input type="range" class="range-slider" id="temp-slider" min="0.5" max="1.1" step="0.05" value="0.75">
+          </div>
+        </div>
+      </div>
+
+      <div class="status-toast" id="home-toast"></div>
+    </div>
+
+    <!-- ── View 2: Manage (Add, Edit, Delete Providers) ── -->
+    <div class="view-panel" id="view-manage">
+      
+      <!-- Add / Edit Provider Card -->
+      <div class="pcard">
+        <div class="pcard-title">
+          <span id="manage-form-title">Add AI Service</span>
+          <button class="btn-secondary" id="manage-cancel-edit" style="display:none; padding:2px 8px; font-size:10px;">Cancel</button>
+        </div>
+
+        <div class="form-group">
+          <label for="manage-service">Provider</label>
+          <select class="form-select" id="manage-service">
+            <option value="gemini">Google Gemini</option>
+            <option value="openai">OpenAI (ChatGPT)</option>
+            <option value="anthropic">Anthropic (Claude)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="manage-key">API Key</label>
+          <div class="input-with-btn">
+            <input type="password" class="form-input" id="manage-key" placeholder="Paste API key here…" autocomplete="off">
+            <button class="eye-btn" id="toggle-key-eye" type="button" title="Show / Hide">👁</button>
+          </div>
+        </div>
+
+        <button class="btn-submit" id="manage-save-btn">
+          <span>➕ Add Provider</span>
+        </button>
+
+        <p style="font-size:10px; color:#8b949e; line-height:1.4; margin-top:2px;">
+          💡 <em>Google Gemini is 100% free with no credit card at <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#58a6ff;">Google AI Studio</a>.</em>
+        </p>
+      </div>
+
+      <!-- Configured Providers List -->
+      <div class="pcard">
+        <div class="pcard-title">Configured Providers</div>
+        <div class="service-list" id="services-container">
+          <!-- Populated dynamically via popup.js -->
+        </div>
+      </div>
+
+      <div class="status-toast" id="manage-toast"></div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="pop-footer">
+    Built with ❤️ by <a href="https://shidan.mangmc.in/" target="_blank" id="author-link">YTS Developments</a>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

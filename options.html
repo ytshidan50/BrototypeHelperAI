@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brototype Helper AI — Settings</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    input[type="range"] {
+      width: 100%; accent-color: #7c3aed; margin-bottom: 4px;
+    }
+    .range-row { display: flex; align-items: center; justify-content: space-between; }
+    .range-val { font-size: 13px; color: #7c3aed; font-weight: 700; }
+    #model-select { transition: opacity 0.2s; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-row">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <rect width="36" height="36" rx="10" fill="url(#grad)"/>
+        <text x="18" y="25" text-anchor="middle" font-size="20" fill="white">✨</text>
+        <defs>
+          <linearGradient id="grad" x1="0" y1="0" x2="36" y2="36">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#2563eb"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div>
+        <h1>Brototype Helper AI</h1>
+        <p>Extension Settings</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">AI Provider</p>
+
+      <label for="service-select">AI Service</label>
+      <select id="service-select">
+        <option value="gemini">Google Gemini</option>
+        <option value="openai">OpenAI (ChatGPT)</option>
+        <option value="anthropic">Anthropic (Claude)</option>
+      </select>
+
+      <label for="api-key">API Key</label>
+      <div class="input-wrap field-gap">
+        <input type="password" id="api-key" placeholder="Paste your API key here…" autocomplete="off">
+        <button class="toggle-vis" id="toggle-key" title="Show/hide key">👁</button>
+      </div>
+
+      <label for="model-select">Model</label>
+      <select id="model-select"></select>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Generation</p>
+      <label>Creativity / Temperature</label>
+      <div class="range-row">
+        <input type="range" id="temperature" min="0.5" max="1.2" step="0.05" value="0.85">
+        <span class="range-val" id="temp-display">0.85</span>
+      </div>
+      <p class="hint">Higher = more creative, lower = more consistent.</p>
+    </div>
+
+    <button class="btn-primary" id="save-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Save Settings
+    </button>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
+
