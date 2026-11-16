@@ -82,22 +82,39 @@ homeGotoManage.addEventListener('click', () => switchTab('manage'));
 
 // ── "Tasks ↗" Navigation Button ───────────────────────────────────────────
 tabTasks.addEventListener('click', () => {
-  const targetUrl = 'https://student.brototype.com/tasks/module/details';
+  const targetUrl = 'https://student.brototype.com/tasks/module';
 
-  chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-    const url = tab?.url || '';
-    const isNewOrBrototype =
-      !url ||
-      url === 'about:blank' ||
-      url.startsWith('chrome://newtab') ||
-      url.includes('student.brototype.com');
+  // 1. Check all open tabs to see if student.brototype.com is already open anywhere
+  chrome.tabs.query({}, allTabs => {
+    const existingTab = allTabs?.find(t => t.url && t.url.includes('student.brototype.com'));
 
-    if (isNewOrBrototype && tab?.id) {
-      chrome.tabs.update(tab.id, { url: targetUrl });
-    } else {
-      chrome.tabs.create({ url: targetUrl });
+    if (existingTab && existingTab.id) {
+      // Focus existing Brototype tab and redirect it to module tasks
+      chrome.tabs.update(existingTab.id, { active: true, url: targetUrl });
+      if (existingTab.windowId) {
+        chrome.windows.update(existingTab.windowId, { focused: true });
+      }
+      window.close();
+      return;
     }
-    window.close();
+
+    // 2. If no Brototype tab is open, check current active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) => {
+      const url = activeTab?.url || '';
+      const isNewTab =
+        !url ||
+        url === 'about:blank' ||
+        url.startsWith('chrome://newtab') ||
+        url.startsWith('edge://newtab') ||
+        url.startsWith('chrome-search://');
+
+      if (isNewTab && activeTab?.id) {
+        chrome.tabs.update(activeTab.id, { url: targetUrl });
+      } else {
+        chrome.tabs.create({ url: targetUrl });
+      }
+      window.close();
+    });
   });
 });
 
