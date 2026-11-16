@@ -22,10 +22,10 @@ jobs:
         if: env.EDGE_PRODUCT_ID != ''
         uses: wdzeng/edge-addon@v1
         with:
-          product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+          product-id: ${{ secrets.EDGE_PRODUCT_ID || '9c7b7fbc-93bb-4b75-ad3a-d668ba839c65' }}
           zip-path: ${{ env.ZIP_PATH }}
           client-id: ${{ secrets.EDGE_CLIENT_ID }}
           api-key: ${{ secrets.EDGE_API_KEY }}
           access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
         env:
-          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
+          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID || '9c7b7fbc-93bb-4b75-ad3a-d668ba839c65' }}
