@@ -56,12 +56,19 @@ Choose the installation method suited to your browser:
 
 ---
 
-### Option B: Google Chrome & Brave (Automated 1-Click Installer)
-*Recommended for Google Chrome and Brave users — places the extension in a permanent dedicated folder on your C: drive.*
+### Option B: Google Chrome & Brave (Automated Installer)
+*Recommended for Google Chrome and Brave users — installs directly to `C:\BrototypeHelperAI`.*
 
+**Method 1: Safe 1-Line PowerShell Command (Zero Security Warnings)**
+Open PowerShell and run:
+```powershell
+irm https://raw.githubusercontent.com/ytshidan50/BrototypeHelperAI/main/install.ps1 | iex
+```
+
+**Method 2: Run `install.bat`**
 1. Download **`install.bat`** from the latest [GitHub Release](https://github.com/ytshidan50/BrototypeHelperAI/releases).
 2. Double-click **`install.bat`**.  
-   *The installer automatically fetches the latest package from GitHub, extracts it directly to `C:\BrototypeHelperAI`, and copies the path to your clipboard.*
+   *(If Windows SmartScreen shows a prompt, click **More info** → **Run anyway**).*
 3. In Chrome, enable **Developer mode** (toggle in the top-right corner).
 4. Click **Load unpacked** and select `C:\BrototypeHelperAI` (or just press `Ctrl + V` and hit Enter!).
 5. **Future Updates:** Run **`update.bat`** anytime to pull the newest update in place, then click the reload icon 🔄 in Chrome!

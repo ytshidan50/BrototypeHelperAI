@@ -1,0 +1,31 @@
+name: Publish to Microsoft Edge Add-ons
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  publish-edge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Package Extension
+        run: |
+          ZIP_NAME="Brototype-Helper-AI-Store.zip"
+          zip -r "$ZIP_NAME" manifest.json background.js content.js content.css popup.html popup.js popup.css shared.css options.html options.js icons/
+          echo "ZIP_PATH=$ZIP_NAME" >> $GITHUB_ENV
+
+      - name: Upload & Publish to Microsoft Edge Add-ons
+        if: env.EDGE_PRODUCT_ID != ''
+        uses: wdzeng/edge-addon@v1
+        with:
+          product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+          zip-path: ${{ env.ZIP_PATH }}
+          client-id: ${{ secrets.EDGE_CLIENT_ID }}
+          api-key: ${{ secrets.EDGE_API_KEY }}
+          access-token-url: ${{ secrets.EDGE_ACCESS_TOKEN_URL }}
+        env:
+          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
