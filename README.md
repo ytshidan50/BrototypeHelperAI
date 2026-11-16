@@ -1,6 +1,6 @@
 # ✨ Brototype Helper AI
 
-[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/ytshidan/Brototype-Helper-AI/releases)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/ytshidan50/BrototypeHelperAI/releases)
 [![Platform](https://img.shields.io/badge/platform-Edge%20%7C%20Chrome%20%7C%20Brave-green.svg)](https://student.brototype.com/)
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
 [![Maintained by YTS Developments](https://img.shields.io/badge/author-YTS%20Developments-orange.svg)](https://shidan.mangmc.in/)
@@ -59,7 +59,7 @@ Choose the installation method suited to your browser:
 ### Option B: Google Chrome & Brave (Automated 1-Click Installer)
 *Recommended for Google Chrome and Brave users — places the extension in a permanent dedicated folder on your C: drive.*
 
-1. Download **`install.bat`** from the latest [GitHub Release](https://github.com/ytshidan/Brototype-Helper-AI/releases).
+1. Download **`install.bat`** from the latest [GitHub Release](https://github.com/ytshidan50/BrototypeHelperAI/releases).
 2. Double-click **`install.bat`**.  
    *The installer automatically fetches the latest package from GitHub, extracts it to `%LOCALAPPDATA%\BrototypeHelperAI`, and opens Chrome's extensions page.*
 3. In Chrome, enable **Developer mode** (toggle in the top-right corner).
@@ -69,7 +69,7 @@ Choose the installation method suited to your browser:
 ---
 
 ### Option C: Manual Unpack from Releases (Any Chromium Browser)
-1. Download **`Brototype-Helper-AI-Store.zip`** from [GitHub Releases](https://github.com/ytshidan/Brototype-Helper-AI/releases).
+1. Download **`Brototype-Helper-AI-Store.zip`** from [GitHub Releases](https://github.com/ytshidan50/BrototypeHelperAI/releases).
 2. Extract the `.zip` archive into a permanent folder on your computer.
 3. Navigate to `chrome://extensions/` or `edge://extensions/`.
 4. Enable **Developer mode** (top-right).

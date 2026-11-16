@@ -14,7 +14,7 @@ if not exist "%TARGET_DIR%" mkdir "%TARGET_DIR%"
 
 echo [2/4] Fetching latest release from GitHub...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "$repo = 'ytshidan/Brototype-Helper-AI';" ^
+  "$repo = 'ytshidan50/BrototypeHelperAI';" ^
   "try {" ^
   "  $release = Invoke-RestMethod -Uri \"https://api.github.com/repos/$repo/releases/latest\";" ^
   "  $asset = $release.assets | Where-Object { $_.name -like '*.zip' } | Select-Object -First 1;" ^

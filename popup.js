@@ -390,6 +390,7 @@ async function checkForUpdates() {
   try {
     const currentVersion = chrome.runtime.getManifest().version;
     const repos = [
+      'ytshidan50/BrototypeHelperAI',
       'ytshidan/Brototype-Helper-AI',
       'ytshidan/Brototype-AI-Task-Assistant'
     ];

@@ -11,7 +11,7 @@ set "ZIP_PATH=%TEMP%\brototype_helper_latest.zip"
 
 echo [1/3] Checking for latest release from GitHub...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "$repo = 'ytshidan/Brototype-Helper-AI';" ^
+  "$repo = 'ytshidan50/BrototypeHelperAI';" ^
   "try {" ^
   "  $release = Invoke-RestMethod -Uri \"https://api.github.com/repos/$repo/releases/latest\";" ^
   "  $asset = $release.assets | Where-Object { $_.name -like '*.zip' } | Select-Object -First 1;" ^
