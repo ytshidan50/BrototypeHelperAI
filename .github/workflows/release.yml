@@ -27,7 +27,10 @@ jobs:
       - name: Create or Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ env.ZIP_NAME }}
+          files: |
+            ${{ env.ZIP_NAME }}
+            install.bat
+            update.bat
           draft: false
           prerelease: false
           generate_release_notes: true
